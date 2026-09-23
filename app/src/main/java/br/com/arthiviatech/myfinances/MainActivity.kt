@@ -110,7 +110,13 @@ private fun MinhasFinancasApp() {
 @Composable
 private fun AppContent(modifier: Modifier, navController: NavHostController) {
     NavHost(navController, startDestination = Home, modifier = modifier.fillMaxSize()) {
-        composable<Home> { HomeCompose() }
+        composable<Home> {
+            HomeCompose(
+                onNewExpense = { navController.navigate(NewExpense) },
+                onFutureAccounts = { navController.navigate(FutureAccounts) },
+                onExpenseClick = { expenseId -> navController.navigate(ExpenseDetails(expenseId)) },
+            )
+        }
         composable<More> { MoreCompose() }
         composable<Reports> { ReportsCompose() }
         composable<NewExpense> { NewExpensive() }

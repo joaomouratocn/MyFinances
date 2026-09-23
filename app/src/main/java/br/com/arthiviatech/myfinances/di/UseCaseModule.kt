@@ -11,6 +11,8 @@ import br.com.arthiviatech.myfinances.domain.usecase.PauseRecurringExpenseUseCas
 import br.com.arthiviatech.myfinances.domain.usecase.ResolveDateForMonthUseCase
 import br.com.arthiviatech.myfinances.domain.usecase.ResumeRecurringExpenseUseCase
 import br.com.arthiviatech.myfinances.domain.usecase.UpdateFutureFixedRevenueUseCase
+import br.com.arthiviatech.myfinances.ui.home.HomeViewModel
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val useCaseModule = module {
@@ -25,4 +27,5 @@ val useCaseModule = module {
     factory { UpdateFutureFixedRevenueUseCase(get()) }
     factory { CalculateMonthlyBalanceUseCase(get()) }
     factory { DisableInstallmentsFromUseCase(get(), get()) }
+    viewModel { HomeViewModel(get(), get(), get()) }
 }
