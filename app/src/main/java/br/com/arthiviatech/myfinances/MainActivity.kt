@@ -8,19 +8,17 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
@@ -83,7 +81,7 @@ private fun MinhasFinancasApp() {
                         NavigationRailItem(
                             selected = selectedTab == tab,
                             onClick = { navController.navigateToApp(tab) },
-                            icon = { NavigationSymbol(tab.symbol) },
+                            icon = { NavigationSymbol(tab.symbol, tab.label) },
                             label = { Text(tab.label) },
                             alwaysShowLabel = true
                         )
@@ -98,7 +96,7 @@ private fun MinhasFinancasApp() {
                         NavigationBarItem(
                             selected = selectedTab == tab,
                             onClick = { navController.navigateToApp(tab) },
-                            icon = { NavigationSymbol(tab.symbol) },
+                            icon = { NavigationSymbol(tab.symbol, tab.label) },
                             label = { Text(tab.label) }
                         )
                     }
@@ -125,17 +123,9 @@ private fun AppContent(modifier: Modifier, navController: NavHostController) {
 }
 
 @Composable
-private fun NavigationSymbol(symbol: String) {
-    Surface(
-        color = MaterialTheme.colorScheme.primaryContainer,
-        shape = MaterialTheme.shapes.small
-    ) {
-        Text(
-            symbol,
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
-            color = MaterialTheme.colorScheme.onPrimaryContainer,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center
-        )
-    }
+private fun NavigationSymbol(symbol: ImageVector, label: String) {
+    Icon(
+        imageVector = symbol,
+        contentDescription = label,
+    )
 }
