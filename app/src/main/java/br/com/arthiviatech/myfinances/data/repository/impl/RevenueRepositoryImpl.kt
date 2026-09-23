@@ -22,11 +22,15 @@ class RevenueRepositoryImpl(
         fixedRevenueVersionDao.observeByFixedRevenue(fixedRevenueId)
     override suspend fun findEntryById(id: Long) = revenueEntryDao.findById(id)
     override suspend fun findFixedRevenueById(id: Long) = fixedRevenueDao.findById(id)
+    override suspend fun findFixedRevenuesEligibleForMonth(referenceMonth: Int) =
+        fixedRevenueDao.findEligibleForMonth(referenceMonth)
     override suspend fun findFixedEntryForMonth(fixedRevenueId: Long, referenceMonth: Int) =
         revenueEntryDao.findByFixedRevenueAndMonth(fixedRevenueId, referenceMonth)
     override suspend fun findEffectiveVersion(fixedRevenueId: Long, referenceMonth: Int) =
         fixedRevenueVersionDao.findEffectiveVersion(fixedRevenueId, referenceMonth)
     override suspend fun insertEntry(revenue: RevenueEntryEntity) = revenueEntryDao.insert(revenue)
+    override suspend fun insertEntries(revenues: List<RevenueEntryEntity>) =
+        revenueEntryDao.insertAll(revenues)
     override suspend fun updateEntry(revenue: RevenueEntryEntity) = revenueEntryDao.update(revenue)
 
     override suspend fun createFixedRevenue(

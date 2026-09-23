@@ -19,4 +19,9 @@ class ExpenseRepositoryImpl(
     override suspend fun markAsPaid(id: Long, paidAt: Long) = expenseDao.markAsPaid(id, paidAt) > 0
     override suspend fun markAsPending(id: Long) = expenseDao.markAsPending(id) > 0
     override suspend fun disable(id: Long, disabledAt: Long) = expenseDao.disable(id, disabledAt) > 0
+    override suspend fun disableInstallmentsFrom(
+        installmentPlanId: Long,
+        fromInstallmentNumber: Int,
+        disabledAt: Long,
+    ) = expenseDao.disableInstallmentsFrom(installmentPlanId, fromInstallmentNumber, disabledAt)
 }

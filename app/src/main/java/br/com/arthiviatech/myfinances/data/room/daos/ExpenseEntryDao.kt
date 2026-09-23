@@ -60,4 +60,19 @@ interface ExpenseEntryDao {
 
     @Query("UPDATE expense_entries SET enabled = 0, disabled_at = :disabledAt WHERE id = :id")
     suspend fun disable(id: Long, disabledAt: Long): Int
+
+    @Query(
+        """
+        UPDATE expense_entries
+        SET enabled = 0, disabled_at = :disabledAt
+        WHERE installment_plan_id = :installmentPlanId
+          AND installment_number >= :fromInstallmentNumber
+          AND enabled = 1
+        """,
+    )
+    suspend fun disableInstallmentsFrom(
+        installmentPlanId: Long,
+        fromInstallmentNumber: Int,
+        disabledAt: Long,
+    ): Int
 }

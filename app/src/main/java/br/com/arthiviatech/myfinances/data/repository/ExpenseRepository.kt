@@ -17,4 +17,9 @@ interface ExpenseRepository {
     suspend fun markAsPaid(id: Long, paidAt: Long): Boolean
     suspend fun markAsPending(id: Long): Boolean
     suspend fun disable(id: Long, disabledAt: Long): Boolean
+    suspend fun disableInstallmentsFrom(
+        installmentPlanId: Long,
+        fromInstallmentNumber: Int,
+        disabledAt: Long,
+    ): Int
 }

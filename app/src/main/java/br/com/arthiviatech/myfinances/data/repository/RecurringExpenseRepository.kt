@@ -10,6 +10,7 @@ interface RecurringExpenseRepository {
     fun observeAll(): Flow<List<RecurringExpenseEntity>>
     fun observePauses(recurringExpenseId: Long): Flow<List<RecurrencePauseEntity>>
     suspend fun findById(id: Long): RecurringExpenseEntity?
+    suspend fun findOpenPause(recurringExpenseId: Long): RecurrencePauseEntity?
     suspend fun findEligibleForMonth(referenceMonth: Int): List<RecurringExpenseEntity>
     suspend fun insert(recurringExpense: RecurringExpenseEntity): Long
     suspend fun update(recurringExpense: RecurringExpenseEntity)
