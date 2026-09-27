@@ -44,6 +44,8 @@ class RevenueRepositoryImpl(
 
     override suspend fun insertVersion(version: FixedRevenueVersionEntity) =
         fixedRevenueVersionDao.insert(version)
+    override suspend fun updateVersion(version: FixedRevenueVersionEntity) =
+        fixedRevenueVersionDao.update(version)
     override suspend fun disableEntry(id: Long, disabledAt: Long) =
         revenueEntryDao.disable(id, disabledAt) > 0
     override suspend fun disableFixedRevenue(id: Long, disabledAt: Long) =

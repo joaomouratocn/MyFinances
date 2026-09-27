@@ -47,6 +47,18 @@ class FinancialDateUseCasesTest {
     }
 
     @Test
+    fun cardDueDate_onClosingDay_usesUpcomingStatementDueDate() {
+        assertEquals(
+            LocalDate.of(2026, 10, 5),
+            calculateCardDueDate(
+                purchaseDate = LocalDate.of(2026, 9, 25),
+                dueDay = 5,
+                closingDay = 25,
+            ),
+        )
+    }
+
+    @Test
     fun cardWithoutClosing_usesMonthSelectedByUser() {
         assertEquals(
             LocalDate.of(2027, 2, 28),

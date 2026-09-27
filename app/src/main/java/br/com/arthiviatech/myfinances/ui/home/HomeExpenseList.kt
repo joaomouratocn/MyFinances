@@ -12,8 +12,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Error
 import androidx.compose.material.icons.rounded.Payments
+import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material.icons.rounded.FilterList
 import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material3.AssistChip
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -31,8 +34,9 @@ import java.time.format.DateTimeFormatter
 
 @Composable
 internal fun HomeExpenseList(
-    expenses: List<HomeExpenseUi>,
+    uiState: HomeUiState,
     onExpenseClick: (Long) -> Unit,
+    filterActions: HomeFilterActions,
 ) {
     Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         Text(
@@ -41,14 +45,27 @@ internal fun HomeExpenseList(
             fontWeight = FontWeight.Bold,
             modifier = Modifier.weight(1f),
         )
-        AssistChip(onClick = {}, label = { Text("Filtrar") })
+        AssistChip(
+            onClick = filterActions.onOpenFilters,
+            label = { Text(if (uiState.filters.activeCount == 0) "Filtrar" else "Filtros (${uiState.filters.activeCount})") },
+            leadingIcon = { Icon(Icons.Rounded.FilterList, contentDescription = null) },
+        )
     }
 
-    if (expenses.isEmpty()) {
+    OutlinedTextField(
+        value = uiState.searchQuery,
+        onValueChange = filterActions.onSearchChange,
+        label = { Text("Pesquisar despesas") },
+        leadingIcon = { Icon(Icons.Rounded.Search, contentDescription = null) },
+        singleLine = true,
+        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+    )
+
+    if (uiState.expenses.isEmpty()) {
         HomeEmptyExpenses()
     } else {
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            expenses.forEach { expense ->
+            uiState.expenses.forEach { expense ->
                 HomeExpenseCard(expense = expense, onClick = { onExpenseClick(expense.id) })
             }
         }
@@ -154,10 +171,7 @@ private fun HomeExpenseStatusBadge(status: ExpenseStatus) {
 private fun HomeExpenseListPreview() {
     MyFinancesTheme {
         Column(modifier = Modifier.padding(16.dp)) {
-            HomeExpenseList(
-                expenses = previewHomeExpenses(),
-                onExpenseClick = {},
-            )
+            HomeExpenseList(previewHomeUiState(), {}, HomeFilterActions())
         }
     }
 }
@@ -167,7 +181,7 @@ private fun HomeExpenseListPreview() {
 private fun HomeEmptyExpenseListPreview() {
     MyFinancesTheme {
         Column(modifier = Modifier.padding(16.dp)) {
-            HomeExpenseList(expenses = emptyList(), onExpenseClick = {})
+            HomeExpenseList(HomeUiState(), {}, HomeFilterActions())
         }
     }
 }

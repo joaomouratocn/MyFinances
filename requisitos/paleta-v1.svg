@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1050" viewBox="0 0 1400 1050">
+  <style>
+    .title{font:700 30px sans-serif}.subtitle{font:16px sans-serif}.section{font:700 23px sans-serif}.name{font:700 15px sans-serif}.hex{font:14px monospace}.darkText{fill:#1A1B20}.lightText{fill:#FFFFFF}.muted{fill:#5C5F67}
+  </style>
+  <rect width="1400" height="1050" fill="#ECEEF2"/>
+  <text x="55" y="55" class="title darkText">Minhas Finanças — Paleta V1</text>
+  <text x="55" y="85" class="subtitle muted">Azul primário • Laranja secundário • Temas claro e escuro</text>
+
+  <g transform="translate(55 130)">
+    <text x="0" y="0" class="section darkText">Tema claro</text>
+    <g transform="translate(0 25)">
+      <rect width="200" height="115" rx="12" fill="#005AC1"/><text x="16" y="34" class="name lightText">Primary</text><text x="16" y="60" class="hex lightText">#005AC1</text>
+      <rect x="215" width="200" height="115" rx="12" fill="#D8E2FF"/><text x="231" y="34" class="name darkText">Primary Container</text><text x="231" y="60" class="hex darkText">#D8E2FF</text>
+      <rect x="430" width="200" height="115" rx="12" fill="#9C4400"/><text x="446" y="34" class="name lightText">Secondary</text><text x="446" y="60" class="hex lightText">#9C4400</text>
+      <rect x="645" width="200" height="115" rx="12" fill="#FFDBC8"/><text x="661" y="34" class="name darkText">Secondary Container</text><text x="661" y="60" class="hex darkText">#FFDBC8</text>
+      <rect x="860" width="200" height="115" rx="12" fill="#146C2E"/><text x="876" y="34" class="name lightText">Success</text><text x="876" y="60" class="hex lightText">#146C2E</text>
+      <rect x="1075" width="200" height="115" rx="12" fill="#BA1A1A"/><text x="1091" y="34" class="name lightText">Error</text><text x="1091" y="60" class="hex lightText">#BA1A1A</text>
+    </g>
+    <g transform="translate(0 155)">
+      <rect width="200" height="90" rx="12" fill="#FAF8FF" stroke="#74777F"/><text x="16" y="32" class="name darkText">Background</text><text x="16" y="57" class="hex darkText">#FAF8FF</text>
+      <rect x="215" width="200" height="90" rx="12" fill="#FFFFFF" stroke="#74777F"/><text x="231" y="32" class="name darkText">Surface</text><text x="231" y="57" class="hex darkText">#FFFFFF</text>
+      <rect x="430" width="200" height="90" rx="12" fill="#E1E2EC"/><text x="446" y="32" class="name darkText">Surface Variant</text><text x="446" y="57" class="hex darkText">#E1E2EC</text>
+      <rect x="645" width="200" height="90" rx="12" fill="#1A1B20"/><text x="661" y="32" class="name lightText">On Background</text><text x="661" y="57" class="hex lightText">#1A1B20</text>
+      <rect x="860" width="200" height="90" rx="12" fill="#44474F"/><text x="876" y="32" class="name lightText">On Surface Variant</text><text x="876" y="57" class="hex lightText">#44474F</text>
+      <rect x="1075" width="200" height="90" rx="12" fill="#74777F"/><text x="1091" y="32" class="name lightText">Outline</text><text x="1091" y="57" class="hex lightText">#74777F</text>
+    </g>
+  </g>
+
+  <g transform="translate(55 460)">
+    <text x="0" y="0" class="section darkText">Tema escuro</text>
+    <rect x="0" y="25" width="1290" height="400" rx="20" fill="#111318"/>
+    <g transform="translate(15 45)">
+      <rect width="200" height="115" rx="12" fill="#ADC7FF"/><text x="16" y="34" class="name darkText">Primary</text><text x="16" y="60" class="hex darkText">#ADC7FF</text>
+      <rect x="215" width="200" height="115" rx="12" fill="#00458F"/><text x="231" y="34" class="name lightText">Primary Container</text><text x="231" y="60" class="hex lightText">#00458F</text>
+      <rect x="430" width="200" height="115" rx="12" fill="#FFB68F"/><text x="446" y="34" class="name darkText">Secondary</text><text x="446" y="60" class="hex darkText">#FFB68F</text>
+      <rect x="645" width="200" height="115" rx="12" fill="#783200"/><text x="661" y="34" class="name lightText">Secondary Container</text><text x="661" y="60" class="hex lightText">#783200</text>
+      <rect x="860" width="200" height="115" rx="12" fill="#7DDA95"/><text x="876" y="34" class="name darkText">Success</text><text x="876" y="60" class="hex darkText">#7DDA95</text>
+      <rect x="1075" width="200" height="115" rx="12" fill="#FFB4AB"/><text x="1091" y="34" class="name darkText">Error</text><text x="1091" y="60" class="hex darkText">#FFB4AB</text>
+    </g>
+    <g transform="translate(15 175)">
+      <rect width="200" height="90" rx="12" fill="#111318" stroke="#8E9099"/><text x="16" y="32" class="name lightText">Background</text><text x="16" y="57" class="hex lightText">#111318</text>
+      <rect x="215" width="200" height="90" rx="12" fill="#191C20" stroke="#8E9099"/><text x="231" y="32" class="name lightText">Surface</text><text x="231" y="57" class="hex lightText">#191C20</text>
+      <rect x="430" width="200" height="90" rx="12" fill="#44474F"/><text x="446" y="32" class="name lightText">Surface Variant</text><text x="446" y="57" class="hex lightText">#44474F</text>
+      <rect x="645" width="200" height="90" rx="12" fill="#E2E2E9"/><text x="661" y="32" class="name darkText">On Background</text><text x="661" y="57" class="hex darkText">#E2E2E9</text>
+      <rect x="860" width="200" height="90" rx="12" fill="#C4C6D0"/><text x="876" y="32" class="name darkText">On Surface Variant</text><text x="876" y="57" class="hex darkText">#C4C6D0</text>
+      <rect x="1075" width="200" height="90" rx="12" fill="#8E9099"/><text x="1091" y="32" class="name darkText">Outline</text><text x="1091" y="57" class="hex darkText">#8E9099</text>
+    </g>
+    <text x="20" y="310" class="name lightText">Exemplo de hierarquia</text>
+    <rect x="20" y="330" width="390" height="54" rx="10" fill="#ADC7FF"/><text x="143" y="364" class="name darkText">Ação principal</text>
+    <rect x="430" y="330" width="390" height="54" rx="10" fill="#783200"/><text x="539" y="364" class="name lightText">Conta pendente</text>
+    <rect x="840" y="330" width="410" height="54" rx="10" fill="#191C20" stroke="#8E9099"/><text x="957" y="364" class="name lightText">Superfície de conteúdo</text>
+  </g>
+
+  <g transform="translate(55 930)">
+    <text x="0" y="0" class="section darkText">Uso semântico</text>
+    <circle cx="20" cy="42" r="12" fill="#005AC1"/><text x="42" y="47" class="name darkText">Receitas / ação principal</text>
+    <circle cx="320" cy="42" r="12" fill="#9C4400"/><text x="342" y="47" class="name darkText">Despesas / pendente</text>
+    <circle cx="600" cy="42" r="12" fill="#146C2E"/><text x="622" y="47" class="name darkText">Pago / saldo positivo</text>
+    <circle cx="900" cy="42" r="12" fill="#BA1A1A"/><text x="922" y="47" class="name darkText">Atrasado / saldo negativo</text>
+  </g>
+</svg>

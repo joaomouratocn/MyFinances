@@ -24,6 +24,9 @@ data object Revenues
 data object Cards
 
 @Serializable
+data object Invoices
+
+@Serializable
 data object Categories
 @Serializable
 data class ExpenseDetails(val expenseId: Long)

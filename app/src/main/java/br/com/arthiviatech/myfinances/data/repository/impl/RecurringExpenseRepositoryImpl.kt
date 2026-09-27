@@ -20,9 +20,12 @@ class RecurringExpenseRepositoryImpl(
     override fun observeAll() = recurringExpenseDao.observeAll()
     override fun observePauses(recurringExpenseId: Long) =
         recurrencePauseDao.observeByRecurringExpense(recurringExpenseId)
+    override fun observeAllPauses() = recurrencePauseDao.observeAll()
     override suspend fun findById(id: Long) = recurringExpenseDao.findById(id)
     override suspend fun findOpenPause(recurringExpenseId: Long) =
         recurrencePauseDao.findOpenPause(recurringExpenseId)
+    override suspend fun findPauses(recurringExpenseId: Long) =
+        recurrencePauseDao.findAllByRecurringExpense(recurringExpenseId)
     override suspend fun findEligibleForMonth(referenceMonth: Int) =
         recurringExpenseDao.findEligibleForMonth(referenceMonth)
     override suspend fun insert(recurringExpense: RecurringExpenseEntity) =

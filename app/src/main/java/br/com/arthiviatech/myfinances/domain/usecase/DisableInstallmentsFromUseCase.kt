@@ -18,10 +18,12 @@ class DisableInstallmentsFromUseCase(
         require(fromInstallmentNumber in 1..plan.installmentCount) {
             "O número da parcela está fora do intervalo do parcelamento."
         }
-        return expenseRepository.disableInstallmentsFrom(
+        val disabledCount = expenseRepository.disableInstallmentsFrom(
             installmentPlanId = installmentPlanId,
             fromInstallmentNumber = fromInstallmentNumber,
             disabledAt = disabledAt,
         )
+        if (disabledCount > 0) installmentRepository.disable(installmentPlanId, disabledAt)
+        return disabledCount
     }
 }

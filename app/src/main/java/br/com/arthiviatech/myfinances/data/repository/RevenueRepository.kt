@@ -22,6 +22,7 @@ interface RevenueRepository {
         initialVersion: FixedRevenueVersionEntity,
     ): Long
     suspend fun insertVersion(version: FixedRevenueVersionEntity): Long
+    suspend fun updateVersion(version: FixedRevenueVersionEntity)
     suspend fun disableEntry(id: Long, disabledAt: Long): Boolean
     suspend fun disableFixedRevenue(id: Long, disabledAt: Long): Boolean
 }

@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1760" viewBox="0 0 1600 1760">
+  <defs>
+    <style>
+      .bg { fill: #eef1f4; }
+      .phone { fill: #fff; stroke: #20252b; stroke-width: 3; }
+      .bar { fill: #e3e7eb; }
+      .card { fill: #f7f8fa; stroke: #9ca5af; stroke-width: 1.5; }
+      .field { fill: #fff; stroke: #6f7882; stroke-width: 1.5; }
+      .button { fill: #303840; }
+      .soft { fill: #dce2e7; }
+      .alert { fill: #f4f0df; stroke: #aaa070; stroke-width: 1.5; }
+      .title { font: 700 22px sans-serif; fill: #171a1d; }
+      .heading { font: 700 16px sans-serif; fill: #20252b; }
+      .text { font: 14px sans-serif; fill: #363c43; }
+      .small { font: 12px sans-serif; fill: #5d6670; }
+      .white { font: 700 14px sans-serif; fill: #fff; }
+      .label { font: 700 20px sans-serif; fill: #20252b; }
+      .line { stroke: #a4acb5; stroke-width: 1.5; }
+    </style>
+  </defs>
+  <rect class="bg" width="1600" height="1760"/>
+  <text x="60" y="45" class="title">Minhas Finanças — Wireframes V1</text>
+  <text x="60" y="70" class="text">Baixa fidelidade • estrutura e navegação</text>
+
+  <!-- 1 Inicio -->
+  <g transform="translate(60 110)">
+    <text x="0" y="-15" class="label">1. Início</text>
+    <rect class="phone" width="330" height="720" rx="24"/>
+    <rect class="bar" x="2" y="2" width="326" height="58" rx="22"/>
+    <text x="22" y="38" class="heading">Olá! Suas finanças</text>
+    <text x="72" y="92" class="heading">‹  Setembro 2026  ›</text>
+    <rect class="card" x="18" y="112" width="294" height="105" rx="10"/>
+    <text x="34" y="140" class="small">SALDO PREVISTO</text>
+    <text x="34" y="174" class="title">R$ 2.450,00</text>
+    <text x="34" y="199" class="small">Receitas R$ 5.000  •  Despesas R$ 2.550</text>
+    <rect class="alert" x="18" y="232" width="294" height="70" rx="9"/>
+    <text x="32" y="257" class="heading">3 contas aguardam valor</text>
+    <text x="32" y="282" class="text">Revisar contas futuras  →</text>
+    <text x="20" y="336" class="heading">Despesas do mês</text>
+    <rect class="soft" x="210" y="316" width="102" height="30" rx="15"/>
+    <text x="234" y="336" class="small">Filtrar</text>
+    <rect class="card" x="18" y="358" width="294" height="66" rx="8"/>
+    <text x="32" y="383" class="heading">Aluguel</text><text x="238" y="383" class="heading">R$ 1.200</text>
+    <text x="32" y="407" class="small">Moradia • vence dia 10 • Pendente</text>
+    <rect class="card" x="18" y="434" width="294" height="66" rx="8"/>
+    <text x="32" y="459" class="heading">Notebook 3/10</text><text x="238" y="459" class="heading">R$ 350</text>
+    <text x="32" y="483" class="small">Compras • Cartão A • Pendente</text>
+    <rect class="button" x="172" y="535" width="140" height="46" rx="23"/>
+    <text x="193" y="564" class="white">+ Nova despesa</text>
+    <rect class="bar" x="2" y="638" width="326" height="80" rx="0"/>
+    <text x="24" y="674" class="heading">⌂</text><text x="104" y="674" class="heading">◷</text><text x="190" y="674" class="heading">▥</text><text x="279" y="674" class="heading">•••</text>
+    <text x="14" y="698" class="small">Início</text><text x="84" y="698" class="small">Futuras</text><text x="165" y="698" class="small">Relatórios</text><text x="267" y="698" class="small">Mais</text>
+  </g>
+
+  <!-- 2 Nova despesa -->
+  <g transform="translate(440 110)">
+    <text x="0" y="-15" class="label">2. Nova despesa</text>
+    <rect class="phone" width="330" height="720" rx="24"/>
+    <text x="20" y="44" class="heading">‹</text><text x="55" y="44" class="title">Nova despesa</text>
+    <text x="20" y="84" class="small">DESCRIÇÃO</text><rect class="field" x="18" y="94" width="294" height="46" rx="7"/><text x="31" y="123" class="text">Ex.: Supermercado</text>
+    <text x="20" y="170" class="small">VALOR</text><rect class="field" x="18" y="180" width="294" height="46" rx="7"/><text x="31" y="209" class="text">R$ 0,00</text>
+    <text x="20" y="256" class="small">CATEGORIA</text><rect class="field" x="18" y="266" width="294" height="46" rx="7"/><text x="31" y="295" class="text">Selecionar                           ⌄</text>
+    <text x="20" y="342" class="small">COMPRA</text><rect class="field" x="18" y="352" width="140" height="46" rx="7"/><text x="31" y="381" class="text">11/09/2026</text>
+    <text x="175" y="342" class="small">VENCIMENTO</text><rect class="field" x="173" y="352" width="139" height="46" rx="7"/><text x="186" y="381" class="text">10/10/2026</text>
+    <text x="20" y="428" class="small">FORMA DE PAGAMENTO</text><rect class="field" x="18" y="438" width="294" height="46" rx="7"/><text x="31" y="467" class="text">Selecionar                           ⌄</text>
+    <rect class="field" x="18" y="510" width="22" height="22" rx="4"/><text x="52" y="527" class="text">Compra parcelada</text>
+    <rect class="field" x="18" y="550" width="22" height="22" rx="4"/><text x="52" y="567" class="text">Conta recorrente</text>
+    <rect class="button" x="18" y="630" width="294" height="48" rx="8"/><text x="137" y="660" class="white">Salvar</text>
+  </g>
+
+  <!-- 3 Parcelada -->
+  <g transform="translate(820 110)">
+    <text x="0" y="-15" class="label">3. Compra parcelada</text>
+    <rect class="phone" width="330" height="720" rx="24"/>
+    <text x="20" y="44" class="heading">‹</text><text x="55" y="44" class="title">Parcelamento</text>
+    <rect class="card" x="18" y="72" width="294" height="75" rx="9"/>
+    <text x="32" y="101" class="heading">Notebook</text><text x="32" y="126" class="small">Compras • Cartão A</text>
+    <text x="20" y="179" class="small">QUANTIDADE DE PARCELAS</text><rect class="field" x="18" y="189" width="294" height="46" rx="7"/><text x="31" y="218" class="text">10</text>
+    <text x="20" y="265" class="small">VALOR DE CADA PARCELA</text><rect class="field" x="18" y="275" width="294" height="46" rx="7"/><text x="31" y="304" class="text">R$ 350,00</text>
+    <text x="20" y="351" class="small">PRIMEIRO VENCIMENTO</text><rect class="field" x="18" y="361" width="294" height="46" rx="7"/><text x="31" y="390" class="text">10/10/2026</text>
+    <rect class="card" x="18" y="438" width="294" height="116" rx="9"/>
+    <text x="32" y="466" class="small">RESUMO</text>
+    <text x="32" y="493" class="text">10 parcelas de R$ 350,00</text>
+    <text x="32" y="522" class="heading">Total informativo: R$ 3.500,00</text>
+    <rect class="button" x="18" y="630" width="294" height="48" rx="8"/><text x="99" y="660" class="white">Criar 10 parcelas</text>
+  </g>
+
+  <!-- 4 Contas futuras -->
+  <g transform="translate(1200 110)">
+    <text x="0" y="-15" class="label">4. Contas futuras</text>
+    <rect class="phone" width="330" height="720" rx="24"/>
+    <text x="20" y="44" class="title">Contas futuras</text>
+    <text x="20" y="80" class="text">Setembro 2026</text>
+    <rect class="alert" x="18" y="102" width="294" height="82" rx="9"/>
+    <text x="32" y="129" class="heading">3 valores aguardando</text>
+    <text x="32" y="154" class="small">Atualize ou exclua contas que não</text><text x="32" y="172" class="small">sejam mais necessárias.</text>
+    <rect class="card" x="18" y="210" width="294" height="100" rx="9"/>
+    <text x="32" y="238" class="heading">Energia elétrica</text><text x="32" y="261" class="small">Moradia • vence dia 15</text>
+    <rect class="soft" x="190" y="271" width="108" height="28" rx="14"/><text x="209" y="290" class="small">Informar valor</text>
+    <rect class="card" x="18" y="322" width="294" height="100" rx="9"/>
+    <text x="32" y="350" class="heading">Água</text><text x="32" y="373" class="small">Moradia • vence dia 20</text>
+    <rect class="soft" x="190" y="383" width="108" height="28" rx="14"/><text x="209" y="402" class="small">Informar valor</text>
+    <rect class="card" x="18" y="434" width="294" height="100" rx="9"/>
+    <text x="32" y="462" class="heading">Internet</text><text x="32" y="485" class="small">Assinaturas • vence dia 25</text>
+    <rect class="soft" x="190" y="495" width="108" height="28" rx="14"/><text x="209" y="514" class="small">Informar valor</text>
+    <rect class="bar" x="2" y="638" width="326" height="80"/>
+    <text x="14" y="690" class="small">Início</text><text x="84" y="690" class="heading">Futuras</text><text x="165" y="690" class="small">Relatórios</text><text x="267" y="690" class="small">Mais</text>
+  </g>
+
+  <!-- 5 Relatorios -->
+  <g transform="translate(60 960)">
+    <text x="0" y="-15" class="label">5. Relatórios</text>
+    <rect class="phone" width="330" height="720" rx="24"/>
+    <text x="20" y="44" class="title">Relatórios</text><text x="72" y="82" class="heading">‹  Setembro 2026  ›</text>
+    <rect class="card" x="18" y="105" width="294" height="110" rx="9"/>
+    <text x="32" y="135" class="small">RECEITAS × DESPESAS</text>
+    <rect x="36" y="158" width="176" height="15" fill="#747e88"/><text x="220" y="171" class="small">R$ 5.000</text>
+    <rect x="36" y="183" width="90" height="15" fill="#b2bac2"/><text x="134" y="196" class="small">R$ 2.550</text>
+    <text x="20" y="248" class="heading">Por categoria</text>
+    <rect class="card" x="18" y="262" width="294" height="122" rx="9"/>
+    <text x="32" y="291" class="text">Moradia</text><text x="233" y="291" class="heading">R$ 1.450</text>
+    <line class="line" x1="32" y1="306" x2="298" y2="306"/>
+    <text x="32" y="334" class="text">Compras</text><text x="233" y="334" class="heading">R$ 700</text>
+    <line class="line" x1="32" y1="349" x2="298" y2="349"/>
+    <text x="32" y="374" class="text">Alimentação</text><text x="233" y="374" class="heading">R$ 400</text>
+    <text x="20" y="424" class="heading">Por cartão</text>
+    <rect class="card" x="18" y="438" width="294" height="86" rx="9"/>
+    <text x="32" y="470" class="text">Cartão A</text><text x="223" y="470" class="heading">R$ 1.000</text>
+    <text x="32" y="501" class="text">Cartão B</text><text x="233" y="501" class="heading">R$ 350</text>
+    <rect class="bar" x="2" y="638" width="326" height="80"/>
+    <text x="14" y="690" class="small">Início</text><text x="84" y="690" class="small">Futuras</text><text x="165" y="690" class="heading">Relatórios</text><text x="267" y="690" class="small">Mais</text>
+  </g>
+
+  <!-- 6 Mais -->
+  <g transform="translate(440 960)">
+    <text x="0" y="-15" class="label">6. Mais</text>
+    <rect class="phone" width="330" height="720" rx="24"/>
+    <text x="20" y="44" class="title">Mais</text>
+    <rect class="card" x="18" y="80" width="294" height="64" rx="9"/><text x="36" y="119" class="heading">Receitas</text><text x="286" y="119" class="heading">›</text>
+    <rect class="card" x="18" y="156" width="294" height="64" rx="9"/><text x="36" y="195" class="heading">Cartões</text><text x="286" y="195" class="heading">›</text>
+    <rect class="card" x="18" y="232" width="294" height="64" rx="9"/><text x="36" y="271" class="heading">Categorias</text><text x="286" y="271" class="heading">›</text>
+    <text x="20" y="342" class="small">SEGURANÇA</text>
+    <rect class="card" x="18" y="354" width="294" height="80" rx="9"/><text x="36" y="384" class="heading">Bloqueio do dispositivo</text><text x="36" y="410" class="small">Bloquear após 5 minutos</text>
+    <text x="20" y="480" class="small">DADOS LOCAIS NESTE DISPOSITIVO</text>
+    <rect class="bar" x="2" y="638" width="326" height="80"/>
+    <text x="14" y="690" class="small">Início</text><text x="84" y="690" class="small">Futuras</text><text x="165" y="690" class="small">Relatórios</text><text x="267" y="690" class="heading">Mais</text>
+  </g>
+
+  <!-- 7 Receitas -->
+  <g transform="translate(820 960)">
+    <text x="0" y="-15" class="label">7. Receitas</text>
+    <rect class="phone" width="330" height="720" rx="24"/>
+    <text x="20" y="44" class="heading">‹</text><text x="55" y="44" class="title">Receitas</text>
+    <rect class="button" x="171" y="72" width="141" height="42" rx="21"/><text x="194" y="98" class="white">+ Nova receita</text>
+    <text x="20" y="150" class="heading">Fixas</text>
+    <rect class="card" x="18" y="166" width="294" height="78" rx="9"/>
+    <text x="32" y="195" class="heading">Salário</text><text x="216" y="195" class="heading">R$ 5.000</text>
+    <text x="32" y="221" class="small">Previsto para dia 5 • Ativa</text>
+    <text x="20" y="286" class="heading">Eventuais do mês</text>
+    <rect class="card" x="18" y="302" width="294" height="78" rx="9"/>
+    <text x="32" y="331" class="heading">Renda extra</text><text x="226" y="331" class="heading">R$ 400</text>
+    <text x="32" y="357" class="small">11/09/2026</text>
+    <rect class="card" x="18" y="420" width="294" height="100" rx="9"/>
+    <text x="32" y="449" class="small">EDITAR RECEITA FIXA</text>
+    <text x="32" y="478" class="text">Editar somente este mês</text>
+    <text x="32" y="505" class="text">Editar padrão dos meses futuros</text>
+  </g>
+
+  <!-- 8 Pagamento -->
+  <g transform="translate(1200 960)">
+    <text x="0" y="-15" class="label">8. Confirmar pagamento</text>
+    <rect class="phone" width="330" height="720" rx="24"/>
+    <text x="20" y="44" class="heading">‹</text><text x="55" y="44" class="title">Detalhe da despesa</text>
+    <rect class="card" x="18" y="82" width="294" height="180" rx="9"/>
+    <text x="32" y="116" class="title">Aluguel</text>
+    <text x="32" y="153" class="small">VALOR</text><text x="204" y="153" class="heading">R$ 1.200,00</text>
+    <text x="32" y="185" class="small">VENCIMENTO</text><text x="204" y="185" class="text">10/09/2026</text>
+    <text x="32" y="217" class="small">SITUAÇÃO</text><text x="204" y="217" class="heading">Pendente</text>
+    <rect class="button" x="18" y="292" width="294" height="48" rx="8"/><text x="91" y="322" class="white">Marcar como paga</text>
+    <rect x="18" y="365" width="294" height="210" rx="12" fill="#fff" stroke="#303840" stroke-width="2"/>
+    <text x="40" y="405" class="title">Confirmar pagamento?</text>
+    <text x="40" y="440" class="text">Aluguel</text><text x="40" y="466" class="heading">R$ 1.200,00</text>
+    <text x="40" y="500" class="small">A data e a hora serão registradas.</text>
+    <rect class="soft" x="40" y="524" width="105" height="36" rx="7"/><text x="67" y="547" class="text">Cancelar</text>
+    <rect class="button" x="158" y="524" width="130" height="36" rx="7"/><text x="181" y="547" class="white">Confirmar</text>
+  </g>
+</svg>

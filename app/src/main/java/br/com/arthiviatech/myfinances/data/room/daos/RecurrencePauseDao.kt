@@ -8,6 +8,12 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RecurrencePauseDao {
+    @Query("SELECT * FROM recurrence_pauses ORDER BY paused_at")
+    fun observeAll(): Flow<List<RecurrencePauseEntity>>
+
+    @Query("SELECT * FROM recurrence_pauses WHERE recurring_expense_id = :recurringExpenseId ORDER BY paused_at")
+    suspend fun findAllByRecurringExpense(recurringExpenseId: Long): List<RecurrencePauseEntity>
+
     @Query(
         """
         SELECT * FROM recurrence_pauses

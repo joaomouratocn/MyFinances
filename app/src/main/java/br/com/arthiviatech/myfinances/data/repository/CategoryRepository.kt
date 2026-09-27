@@ -8,6 +8,7 @@ interface CategoryRepository {
     fun observeAll(): Flow<List<CategoryEntity>>
     suspend fun findById(id: Long): CategoryEntity?
     suspend fun insert(category: CategoryEntity): Long
+    suspend fun insertAll(categories: List<CategoryEntity>): List<Long>
     suspend fun update(category: CategoryEntity)
     suspend fun disable(id: Long, disabledAt: Long): Boolean
     suspend fun enable(id: Long): Boolean

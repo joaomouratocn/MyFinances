@@ -43,19 +43,26 @@ fun HomeCompose(
         onNewExpense = onNewExpense,
         onFutureAccounts = onFutureAccounts,
         onExpenseClick = onExpenseClick,
+        filterActions = HomeFilterActions(
+            viewModel::updateSearch, viewModel::openFilters, viewModel::dismissFilters,
+            viewModel::updateStartDate, viewModel::updateEndDate, viewModel::selectCategory,
+            viewModel::selectCard, viewModel::selectStatus, viewModel::selectSort,
+            viewModel::applyFilters, viewModel::clearFilters,
+        ),
         modifier = modifier,
     )
 }
 
 @Composable
 fun HomeContent(
+    modifier: Modifier = Modifier,
     uiState: HomeUiState,
     onPreviousMonth: () -> Unit,
     onNextMonth: () -> Unit,
     onNewExpense: () -> Unit,
     onFutureAccounts: () -> Unit,
     onExpenseClick: (Long) -> Unit,
-    modifier: Modifier = Modifier,
+    filterActions: HomeFilterActions = HomeFilterActions(),
 ) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -74,13 +81,23 @@ fun HomeContent(
                 .padding(horizontal = 16.dp),
         ) {
             if (maxWidth >= 700.dp) {
-                WideHomeContent(uiState, onPreviousMonth, onNextMonth, onFutureAccounts, onExpenseClick)
+                WideHomeContent(uiState, onPreviousMonth, onNextMonth, onFutureAccounts, onExpenseClick, filterActions)
             } else {
-                CompactHomeContent(uiState, onPreviousMonth, onNextMonth, onFutureAccounts, onExpenseClick)
+                CompactHomeContent(uiState, onPreviousMonth, onNextMonth, onFutureAccounts, onExpenseClick, filterActions)
             }
         }
     }
+    if (uiState.showFilters) HomeExpenseFilterDialog(uiState, filterActions)
 }
+
+data class HomeFilterActions(
+    val onSearchChange: (String) -> Unit = {}, val onOpenFilters: () -> Unit = {},
+    val onDismissFilters: () -> Unit = {}, val onStartDateChange: (String) -> Unit = {},
+    val onEndDateChange: (String) -> Unit = {}, val onCategorySelected: (Long?) -> Unit = {},
+    val onCardSelected: (Long?) -> Unit = {}, val onStatusSelected: (ExpenseStatus?) -> Unit = {},
+    val onSortSelected: (HomeExpenseSort) -> Unit = {}, val onApplyFilters: () -> Unit = {},
+    val onClearFilters: () -> Unit = {},
+)
 
 @Composable
 private fun CompactHomeContent(
@@ -89,6 +106,7 @@ private fun CompactHomeContent(
     onNextMonth: () -> Unit,
     onFutureAccounts: () -> Unit,
     onExpenseClick: (Long) -> Unit,
+    filterActions: HomeFilterActions,
 ) {
     Column(
         modifier = Modifier
@@ -102,7 +120,7 @@ private fun CompactHomeContent(
         if (uiState.pendingAccountsCount > 0) {
             HomePendingAccountsCard(uiState.pendingAccountsCount, onFutureAccounts)
         }
-        HomeExpenseList(uiState.expenses, onExpenseClick)
+        HomeExpenseList(uiState, onExpenseClick, filterActions)
     }
 }
 
@@ -113,6 +131,7 @@ private fun WideHomeContent(
     onNextMonth: () -> Unit,
     onFutureAccounts: () -> Unit,
     onExpenseClick: (Long) -> Unit,
+    filterActions: HomeFilterActions,
 ) {
     Row(
         modifier = Modifier.fillMaxSize(),
@@ -137,7 +156,7 @@ private fun WideHomeContent(
                 .verticalScroll(rememberScrollState())
                 .padding(top = 16.dp, bottom = 96.dp),
         ) {
-            HomeExpenseList(uiState.expenses, onExpenseClick)
+            HomeExpenseList(uiState, onExpenseClick, filterActions)
         }
     }
 }

@@ -2,6 +2,7 @@ package br.com.arthiviatech.myfinances.data.room.daos
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import br.com.arthiviatech.myfinances.data.room.entitys.CategoryEntity
@@ -20,6 +21,9 @@ interface CategoryDao {
 
     @Insert
     suspend fun insert(category: CategoryEntity): Long
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertAll(categories: List<CategoryEntity>): List<Long>
 
     @Update
     suspend fun update(category: CategoryEntity)

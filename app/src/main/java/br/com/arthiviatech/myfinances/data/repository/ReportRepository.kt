@@ -6,6 +6,7 @@ data class MonthlySummary(
     val revenueCents: Long,
     val expenseCents: Long,
     val balanceCents: Long,
+    val expenseByCategoryCents: Map<Long, Long>,
     val expenseByCardCents: Map<Long?, Long>,
 )
 

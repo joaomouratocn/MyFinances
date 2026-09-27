@@ -21,6 +21,9 @@ class ReportRepositoryImpl(
             revenueCents = revenueCents,
             expenseCents = expenseCents,
             balanceCents = revenueCents - expenseCents,
+            expenseByCategoryCents = expenses
+                .groupBy { it.categoryId }
+                .mapValues { (_, entries) -> entries.sumOf { it.amountCents } },
             expenseByCardCents = expenses
                 .groupBy { it.cardId }
                 .mapValues { (_, entries) -> entries.sumOf { it.amountCents } },
