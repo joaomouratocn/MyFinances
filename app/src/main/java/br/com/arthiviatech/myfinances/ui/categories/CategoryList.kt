@@ -43,7 +43,7 @@ internal fun CategoryList(
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 300.dp),
         modifier = modifier.fillMaxSize(),
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(bottom = 96.dp),
+        contentPadding = androidx.compose.foundation.layout.PaddingValues(bottom = 80.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {

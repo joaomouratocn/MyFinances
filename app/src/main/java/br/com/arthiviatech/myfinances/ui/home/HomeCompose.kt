@@ -5,7 +5,9 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -69,8 +71,9 @@ fun HomeContent(
         floatingActionButton = {
             ExtendedFloatingActionButton(
                 onClick = onNewExpense,
-                icon = { Icon(Icons.Rounded.Add, contentDescription = null) },
-                text = { Text("Nova despesa") },
+                modifier = Modifier.height(48.dp),
+                icon = { Icon(Icons.Rounded.Add, contentDescription = null, modifier = Modifier.size(20.dp)) },
+                text = { Text("Nova despesa", style = MaterialTheme.typography.labelMedium) },
             )
         },
     ) { innerPadding ->
@@ -112,7 +115,7 @@ private fun CompactHomeContent(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(bottom = 96.dp),
+            .padding(bottom = 80.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         HomeHeader(uiState.selectedMonth, onPreviousMonth, onNextMonth)
@@ -141,7 +144,7 @@ private fun WideHomeContent(
             modifier = Modifier
                 .weight(0.9f)
                 .verticalScroll(rememberScrollState())
-                .padding(bottom = 96.dp),
+                .padding(bottom = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             HomeHeader(uiState.selectedMonth, onPreviousMonth, onNextMonth)
@@ -154,7 +157,7 @@ private fun WideHomeContent(
             modifier = Modifier
                 .weight(1.1f)
                 .verticalScroll(rememberScrollState())
-                .padding(top = 16.dp, bottom = 96.dp),
+                .padding(top = 16.dp, bottom = 80.dp),
         ) {
             HomeExpenseList(uiState, onExpenseClick, filterActions)
         }

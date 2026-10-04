@@ -7,10 +7,6 @@ internal fun previewRevenueUiState() = RevenueUiState(
     selectedMonth = YearMonth.of(2026, 9),
     fixedRevenues = previewFixedRevenues(),
     monthlyEntries = previewRevenueEntries(),
-    categories = listOf(
-        RevenueOptionUi(1, "Diversos"),
-        RevenueOptionUi(2, "Trabalho"),
-    ),
 )
 
 internal fun previewFixedRevenues() = listOf(

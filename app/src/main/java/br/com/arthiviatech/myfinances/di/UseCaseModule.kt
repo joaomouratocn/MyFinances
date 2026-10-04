@@ -43,7 +43,7 @@ val useCaseModule = module {
     viewModel { ExpenseDetailViewModel(get(), get(), get(), get(), get()) }
     viewModel { CategoriesViewModel(get(), get()) }
     viewModel { CardsViewModel(get(), get()) }
-    viewModel { RevenueViewModel(get(), get(), get(), get()) }
+    viewModel { RevenueViewModel(get(), get(), get()) }
     viewModel { ReportsViewModel(get(), get(), get(), get()) }
     viewModel { InvoicesViewModel(get(), get(), get()) }
     viewModel { FutureViewModel(get(), get(), get(), get(), get(), get(), get(), get(), get()) }

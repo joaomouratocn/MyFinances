@@ -25,9 +25,8 @@ fun MoreCompose(
     onCategories: () -> Unit = {},
     appLockEnabled: Boolean = true,
     onAppLockEnabledChange: (Boolean) -> Unit = {},
-    modifier: Modifier = Modifier,
 ) {
-    MoreContent(onRevenues, onCards, onInvoices, onCategories, appLockEnabled, onAppLockEnabledChange, modifier)
+    MoreContent(onRevenues, onCards, onInvoices, onCategories, appLockEnabled, onAppLockEnabledChange)
 }
 
 @Composable
@@ -38,9 +37,8 @@ fun MoreContent(
     onCategories: () -> Unit,
     appLockEnabled: Boolean = true,
     onAppLockEnabledChange: (Boolean) -> Unit = {},
-    modifier: Modifier = Modifier,
 ) {
-    BoxWithConstraints(modifier = modifier.fillMaxSize()) {
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
         if (maxWidth >= 700.dp) {
             MoreWideContent(onRevenues, onCards, onInvoices, onCategories, appLockEnabled, onAppLockEnabledChange)
         } else {
@@ -65,7 +63,6 @@ private fun MoreCompactContent(
         MoreTitle()
         MoreManagementSection(onRevenues, onCards, onInvoices, onCategories)
         MoreSecuritySection(appLockEnabled, onAppLockEnabledChange)
-        MoreLocalDataSection()
     }
 }
 
@@ -92,7 +89,6 @@ private fun MoreWideContent(
                 verticalArrangement = Arrangement.spacedBy(24.dp),
             ) {
                 MoreSecuritySection(appLockEnabled, onAppLockEnabledChange)
-                MoreLocalDataSection()
             }
         }
     }

@@ -1,8 +1,7 @@
 package br.com.arthiviatech.myfinances
 
-import android.os.Bundle
 import android.app.KeyguardManager
-import android.content.Context
+import android.os.Bundle
 import android.os.SystemClock
 import android.view.WindowManager
 import androidx.activity.compose.setContent
@@ -11,10 +10,14 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
@@ -27,6 +30,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
+import androidx.core.content.edit
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -34,8 +40,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentActivity
 import br.com.arthiviatech.myfinances.navigation.Cards
 import br.com.arthiviatech.myfinances.navigation.Categories
 import br.com.arthiviatech.myfinances.navigation.ExpenseDetails
@@ -48,6 +52,7 @@ import br.com.arthiviatech.myfinances.navigation.NewExpense
 import br.com.arthiviatech.myfinances.navigation.Reports
 import br.com.arthiviatech.myfinances.navigation.Revenues
 import br.com.arthiviatech.myfinances.navigation.navigateToApp
+import br.com.arthiviatech.myfinances.security.SessionLockPolicy
 import br.com.arthiviatech.myfinances.ui.cards.CardsCompose
 import br.com.arthiviatech.myfinances.ui.categories.CategoriesCompose
 import br.com.arthiviatech.myfinances.ui.expense.ExpenseDetailsCompose
@@ -58,13 +63,12 @@ import br.com.arthiviatech.myfinances.ui.invoices.InvoicesCompose
 import br.com.arthiviatech.myfinances.ui.more.MoreCompose
 import br.com.arthiviatech.myfinances.ui.reports.ReportsCompose
 import br.com.arthiviatech.myfinances.ui.revenue.RevenueCompose
-import br.com.arthiviatech.myfinances.ui.theme.MyFinancesTheme
 import br.com.arthiviatech.myfinances.ui.security.LockedContent
-import br.com.arthiviatech.myfinances.security.SessionLockPolicy
+import br.com.arthiviatech.myfinances.ui.theme.MyFinancesTheme
 
 class MainActivity : FragmentActivity() {
     private val securityPreferences by lazy {
-        getSharedPreferences(SECURITY_PREFERENCES, Context.MODE_PRIVATE)
+        getSharedPreferences(SECURITY_PREFERENCES, MODE_PRIVATE)
     }
     private val lockPolicy = SessionLockPolicy()
     private var appLockEnabled by mutableStateOf(true)
@@ -75,7 +79,7 @@ class MainActivity : FragmentActivity() {
     private lateinit var biometricPrompt: BiometricPrompt
 
     private val deviceIsSecure: Boolean
-        get() = (getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager).isDeviceSecure
+        get() = (getSystemService(KEYGUARD_SERVICE) as KeyguardManager).isDeviceSecure
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,8 +95,7 @@ class MainActivity : FragmentActivity() {
                         appLockEnabled = appLockEnabled,
                         onAppLockEnabledChange = ::updateAppLockEnabled,
                     )
-                }
-                else LockedContent(onUnlock = ::requestAuthentication)
+                } else LockedContent(onUnlock = ::requestAuthentication)
             }
         }
     }
@@ -167,7 +170,7 @@ class MainActivity : FragmentActivity() {
                 .setSubtitle("Use a biometria ou o bloqueio do dispositivo")
                 .setAllowedAuthenticators(
                     BiometricManager.Authenticators.BIOMETRIC_WEAK or
-                        BiometricManager.Authenticators.DEVICE_CREDENTIAL,
+                            BiometricManager.Authenticators.DEVICE_CREDENTIAL,
                 )
                 .build(),
         )
@@ -175,7 +178,7 @@ class MainActivity : FragmentActivity() {
 
     private fun updateAppLockEnabled(enabled: Boolean) {
         appLockEnabled = enabled
-        securityPreferences.edit().putBoolean(APP_LOCK_ENABLED, enabled).apply()
+        securityPreferences.edit { putBoolean(APP_LOCK_ENABLED, enabled) }
         if (!enabled) {
             authenticatedInSession = true
             backgroundedAtMillis = null
@@ -224,11 +227,21 @@ private fun MinhasFinancasApp(
                         )
                     }
                 }
-                AppContent(Modifier.weight(1f), navController, appLockEnabled, onAppLockEnabledChange)
+                AppContent(
+                    Modifier.weight(1f),
+                    navController,
+                    appLockEnabled,
+                    onAppLockEnabledChange
+                )
             }
         } else {
             Scaffold(bottomBar = {
-                NavigationBar {
+                NavigationBar(
+                    modifier = Modifier.height(
+                        64.dp + NavigationBarDefaults.windowInsets.asPaddingValues()
+                            .calculateBottomPadding(),
+                    ),
+                ) {
                     MainTab.entries.forEach { tab ->
                         NavigationBarItem(
                             selected = selectedTab == tab,
@@ -239,12 +252,20 @@ private fun MinhasFinancasApp(
                     }
                 }
             }) { padding ->
-                AppContent(Modifier.padding(padding), navController, appLockEnabled, onAppLockEnabledChange)
+                AppContent(
+                    Modifier
+                        .padding(padding)
+                        .consumeWindowInsets(padding),
+                    navController,
+                    appLockEnabled,
+                    onAppLockEnabledChange,
+                )
             }
         }
     }
 
 }
+
 @Composable
 private fun AppContent(
     modifier: Modifier,

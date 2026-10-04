@@ -2,8 +2,6 @@ package br.com.arthiviatech.myfinances.ui.revenue
 
 import java.time.YearMonth
 
-data class RevenueOptionUi(val id: Long, val label: String)
-
 data class FixedRevenueUi(
     val id: Long,
     val description: String,
@@ -54,7 +52,6 @@ data class RevenueUiState(
     val selectedMonth: YearMonth = YearMonth.now(),
     val fixedRevenues: List<FixedRevenueUi> = emptyList(),
     val monthlyEntries: List<RevenueEntryUi> = emptyList(),
-    val categories: List<RevenueOptionUi> = emptyList(),
     val showTypeDialog: Boolean = false,
     val editor: RevenueEditorUi? = null,
     val selectedFixedRevenue: FixedRevenueUi? = null,

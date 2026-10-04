@@ -70,7 +70,7 @@ internal fun RevenueList(
     val eventualEntries = monthlyEntries.filterNot { it.isFixed }
     LazyColumn(
         modifier = modifier,
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(start = 16.dp, end = 16.dp, bottom = 96.dp),
+        contentPadding = androidx.compose.foundation.layout.PaddingValues(start = 16.dp, end = 16.dp, bottom = 80.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         item { RevenueSectionTitle("Fixas") }

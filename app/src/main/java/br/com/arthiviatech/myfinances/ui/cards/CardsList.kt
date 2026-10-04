@@ -36,7 +36,7 @@ internal fun CardsList(cards: List<CardUi>, filter: CardFilter, onEdit: (CardUi)
     LazyVerticalGrid(
         columns = GridCells.Adaptive(300.dp),
         modifier = modifier.fillMaxSize(),
-        contentPadding = PaddingValues(bottom = 96.dp),
+        contentPadding = PaddingValues(bottom = 80.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {

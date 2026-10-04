@@ -18,9 +18,8 @@ enum class MainTab(val label: String, val symbol: ImageVector) {
 
 private inline fun <reified T : Any> NavHostController.navigateToApp(route: T) {
     navigate(route) {
-        popUpTo(graph.findStartDestination().id) { saveState = true }
+        popUpTo(graph.findStartDestination().id)
         launchSingleTop = true
-        restoreState = true
     }
 }
 

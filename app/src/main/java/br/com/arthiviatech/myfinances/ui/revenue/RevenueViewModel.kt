@@ -2,7 +2,6 @@ package br.com.arthiviatech.myfinances.ui.revenue
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.arthiviatech.myfinances.data.repository.CategoryRepository
 import br.com.arthiviatech.myfinances.data.repository.RevenueRepository
 import br.com.arthiviatech.myfinances.data.room.entitys.FixedRevenueEntity
 import br.com.arthiviatech.myfinances.data.room.entitys.FixedRevenueVersionEntity
@@ -28,7 +27,6 @@ private val RevenueDateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
 @OptIn(ExperimentalCoroutinesApi::class)
 class RevenueViewModel(
     private val revenueRepository: RevenueRepository,
-    categoryRepository: CategoryRepository,
     private val materializeFixedRevenues: MaterializeFixedRevenuesUseCase,
     private val clock: AppClock,
 ) : ViewModel() {
@@ -36,11 +34,6 @@ class RevenueViewModel(
     val uiState = mutableState.asStateFlow()
 
     init {
-        viewModelScope.launch {
-            categoryRepository.observeEnabled().collect { categories ->
-                update { copy(categories = categories.map { RevenueOptionUi(it.id, it.name) }) }
-            }
-        }
         viewModelScope.launch {
             mutableState.map { it.selectedMonth }.distinctUntilChanged().flatMapLatest { month ->
                 revenueRepository.observeByMonth(month.toReferenceMonth())
@@ -182,7 +175,6 @@ class RevenueViewModel(
     fun updateAmount(value: String) = updateEditor { copy(amount = value, errorMessage = null) }
     fun updateExpectedDate(value: String) = updateEditor { copy(expectedDate = value, errorMessage = null) }
     fun updateExpectedDay(value: String) = updateEditor { copy(expectedDay = value.filter(Char::isDigit), errorMessage = null) }
-    fun selectCategory(id: Long?) = updateEditor { copy(categoryId = id, errorMessage = null) }
     fun clearMessage() = update { copy(message = null) }
 
     fun saveEditor() {

@@ -29,11 +29,6 @@ internal fun HomeHeader(
     onNextMonth: () -> Unit,
 ) {
     Column(modifier = Modifier.padding(top = 16.dp)) {
-        Text(
-            text = "Olá! Suas finanças",
-            style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold,
-        )
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,

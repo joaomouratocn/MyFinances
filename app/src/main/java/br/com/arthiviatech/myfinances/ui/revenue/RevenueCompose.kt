@@ -54,7 +54,6 @@ fun RevenueCompose(
             onAmountChange = viewModel::updateAmount,
             onExpectedDateChange = viewModel::updateExpectedDate,
             onExpectedDayChange = viewModel::updateExpectedDay,
-            onCategorySelected = viewModel::selectCategory,
             onEditorSave = viewModel::saveEditor,
             onDisableDismiss = viewModel::dismissDisable,
             onDisableConfirm = viewModel::confirmDisable,
@@ -84,7 +83,6 @@ data class RevenueActions(
     val onAmountChange: (String) -> Unit = {},
     val onExpectedDateChange: (String) -> Unit = {},
     val onExpectedDayChange: (String) -> Unit = {},
-    val onCategorySelected: (Long?) -> Unit = {},
     val onEditorSave: () -> Unit = {},
     val onDisableDismiss: () -> Unit = {},
     val onDisableConfirm: () -> Unit = {},
@@ -144,7 +142,7 @@ fun RevenueContent(
         RevenueTypeDialog(actions.onCreateFixed, actions.onCreateEventual, actions.onTypeDismiss)
     }
     uiState.editor?.let { editor ->
-        RevenueEditorDialog(editor, uiState.categories, actions)
+        RevenueEditorDialog(editor, actions)
     }
     uiState.selectedFixedRevenue?.let { fixed ->
         FixedRevenueActionsDialog(fixed, actions)
