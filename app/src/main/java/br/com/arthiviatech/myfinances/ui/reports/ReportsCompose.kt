@@ -1,6 +1,7 @@
 package br.com.arthiviatech.myfinances.ui.reports
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -16,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.arthiviatech.myfinances.ui.theme.MyFinancesTheme
+import br.com.arthiviatech.myfinances.ui.tour.tourTarget
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -41,8 +43,12 @@ fun ReportsContent(
             contentPadding = androidx.compose.foundation.layout.PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            item { ReportsMonthSelector(uiState.selectedMonth, onPreviousMonth, onNextMonth) }
-            item { ReportsSummary(uiState) }
+            item {
+                Box(Modifier.tourTarget("reports_month")) {
+                    ReportsMonthSelector(uiState.selectedMonth, onPreviousMonth, onNextMonth)
+                }
+            }
+            item { Box(Modifier.tourTarget("reports_summary")) { ReportsSummary(uiState) } }
             item { ReportBreakdownSection("Despesas por categoria", uiState.categories) }
             item { ReportBreakdownSection("Despesas por cartão", uiState.cards) }
         }

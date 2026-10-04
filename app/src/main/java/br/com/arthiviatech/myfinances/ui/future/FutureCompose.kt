@@ -1,5 +1,6 @@
 package br.com.arthiviatech.myfinances.ui.future
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -17,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.arthiviatech.myfinances.ui.theme.MyFinancesTheme
+import br.com.arthiviatech.myfinances.ui.tour.tourTarget
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -63,8 +65,12 @@ fun FutureContent(state: FutureUiState, actions: FutureActions, modifier: Modifi
         snackbarHost = { SnackbarHost(snackbar) },
     ) { padding ->
         Column(Modifier.fillMaxSize().padding(padding)) {
-            FutureMonthSelector(state.selectedMonth, actions.onPreviousMonth, actions.onNextMonth)
-            FutureAccountsList(state.pending, state.paused, actions.onEnterValue, actions.onAccountClick, Modifier.weight(1f))
+            Box(Modifier.tourTarget("future_month")) {
+                FutureMonthSelector(state.selectedMonth, actions.onPreviousMonth, actions.onNextMonth)
+            }
+            Box(Modifier.weight(1f)) {
+                FutureAccountsList(state.pending, state.paused, actions.onEnterValue, actions.onAccountClick, Modifier.fillMaxSize())
+            }
         }
     }
     state.editor?.let { FutureValueDialog(it, actions) }

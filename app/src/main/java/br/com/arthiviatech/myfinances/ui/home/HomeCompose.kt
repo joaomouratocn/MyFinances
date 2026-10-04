@@ -1,6 +1,7 @@
 package br.com.arthiviatech.myfinances.ui.home
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.arthiviatech.myfinances.ui.theme.MyFinancesTheme
+import br.com.arthiviatech.myfinances.ui.tour.tourTarget
 import java.time.YearMonth
 import org.koin.androidx.compose.koinViewModel
 
@@ -71,7 +73,7 @@ fun HomeContent(
         floatingActionButton = {
             ExtendedFloatingActionButton(
                 onClick = onNewExpense,
-                modifier = Modifier.height(48.dp),
+                modifier = Modifier.height(48.dp).tourTarget("home_new_expense"),
                 icon = { Icon(Icons.Rounded.Add, contentDescription = null, modifier = Modifier.size(20.dp)) },
                 text = { Text("Nova despesa", style = MaterialTheme.typography.labelMedium) },
             )
@@ -118,8 +120,10 @@ private fun CompactHomeContent(
             .padding(bottom = 80.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        HomeHeader(uiState.selectedMonth, onPreviousMonth, onNextMonth)
-        HomeBalanceCard(uiState)
+        Box(Modifier.tourTarget("home_month")) {
+            HomeHeader(uiState.selectedMonth, onPreviousMonth, onNextMonth)
+        }
+        Box(Modifier.tourTarget("home_balance")) { HomeBalanceCard(uiState) }
         if (uiState.pendingAccountsCount > 0) {
             HomePendingAccountsCard(uiState.pendingAccountsCount, onFutureAccounts)
         }
@@ -147,8 +151,10 @@ private fun WideHomeContent(
                 .padding(bottom = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            HomeHeader(uiState.selectedMonth, onPreviousMonth, onNextMonth)
-            HomeBalanceCard(uiState)
+            Box(Modifier.tourTarget("home_month")) {
+                HomeHeader(uiState.selectedMonth, onPreviousMonth, onNextMonth)
+            }
+            Box(Modifier.tourTarget("home_balance")) { HomeBalanceCard(uiState) }
             if (uiState.pendingAccountsCount > 0) {
                 HomePendingAccountsCard(uiState.pendingAccountsCount, onFutureAccounts)
             }

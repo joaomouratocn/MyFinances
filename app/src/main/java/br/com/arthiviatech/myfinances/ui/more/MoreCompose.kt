@@ -1,6 +1,7 @@
 package br.com.arthiviatech.myfinances.ui.more
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.arthiviatech.myfinances.ui.theme.MyFinancesTheme
+import br.com.arthiviatech.myfinances.ui.tour.tourTarget
 
 @Composable
 fun MoreCompose(
@@ -62,7 +64,9 @@ private fun MoreCompactContent(
     ) {
         MoreTitle()
         MoreManagementSection(onRevenues, onCards, onInvoices, onCategories)
-        MoreSecuritySection(appLockEnabled, onAppLockEnabledChange)
+        Box(Modifier.tourTarget("more_security")) {
+            MoreSecuritySection(appLockEnabled, onAppLockEnabledChange)
+        }
     }
 }
 
@@ -88,7 +92,9 @@ private fun MoreWideContent(
                 modifier = Modifier.weight(1f).verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(24.dp),
             ) {
-                MoreSecuritySection(appLockEnabled, onAppLockEnabledChange)
+                Box(Modifier.tourTarget("more_security")) {
+                    MoreSecuritySection(appLockEnabled, onAppLockEnabledChange)
+                }
             }
         }
     }

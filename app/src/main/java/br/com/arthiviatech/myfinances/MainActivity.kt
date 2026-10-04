@@ -65,6 +65,7 @@ import br.com.arthiviatech.myfinances.ui.reports.ReportsCompose
 import br.com.arthiviatech.myfinances.ui.revenue.RevenueCompose
 import br.com.arthiviatech.myfinances.ui.security.LockedContent
 import br.com.arthiviatech.myfinances.ui.theme.MyFinancesTheme
+import br.com.arthiviatech.myfinances.ui.tour.TourHost
 
 class MainActivity : FragmentActivity() {
     private val securityPreferences by lazy {
@@ -213,53 +214,63 @@ private fun MinhasFinancasApp(
         else -> null
     }
 
-    BoxWithConstraints {
-        if (maxWidth >= 600.dp) {
-            Row(Modifier.fillMaxSize()) {
-                NavigationRail {
-                    MainTab.entries.forEach { tab ->
-                        NavigationRailItem(
-                            selected = selectedTab == tab,
-                            onClick = { navController.navigateToApp(tab) },
-                            icon = { NavigationSymbol(tab.symbol, tab.label) },
-                            label = { Text(tab.label) },
-                            alwaysShowLabel = true
-                        )
+    val tourTab = when {
+        destination?.hasRoute(Home::class) == true -> MainTab.HOME
+        destination?.hasRoute(FutureAccounts::class) == true -> MainTab.FUTURE
+        destination?.hasRoute(Reports::class) == true -> MainTab.REPORTS
+        destination?.hasRoute(More::class) == true -> MainTab.MORE
+        else -> null
+    }
+
+    TourHost(tourTab) {
+        BoxWithConstraints(Modifier.fillMaxSize()) {
+            if (maxWidth >= 600.dp) {
+                Row(Modifier.fillMaxSize()) {
+                    NavigationRail {
+                        MainTab.entries.forEach { tab ->
+                            NavigationRailItem(
+                                selected = selectedTab == tab,
+                                onClick = { navController.navigateToApp(tab) },
+                                icon = { NavigationSymbol(tab.symbol, tab.label) },
+                                label = { Text(tab.label) },
+                                alwaysShowLabel = true,
+                            )
+                        }
                     }
+                    AppContent(
+                        Modifier.weight(1f),
+                        navController,
+                        appLockEnabled,
+                        onAppLockEnabledChange,
+                    )
                 }
-                AppContent(
-                    Modifier.weight(1f),
-                    navController,
-                    appLockEnabled,
-                    onAppLockEnabledChange
-                )
-            }
-        } else {
-            Scaffold(bottomBar = {
-                NavigationBar(
-                    modifier = Modifier.height(
-                        64.dp + NavigationBarDefaults.windowInsets.asPaddingValues()
-                            .calculateBottomPadding(),
-                    ),
-                ) {
-                    MainTab.entries.forEach { tab ->
-                        NavigationBarItem(
-                            selected = selectedTab == tab,
-                            onClick = { navController.navigateToApp(tab) },
-                            icon = { NavigationSymbol(tab.symbol, tab.label) },
-                            label = { Text(tab.label) }
-                        )
+            } else {
+                Scaffold(bottomBar = {
+                    NavigationBar(
+                        modifier = Modifier.height(
+                            64.dp + NavigationBarDefaults.windowInsets.asPaddingValues()
+                                .calculateBottomPadding(),
+                        ),
+                    ) {
+                        MainTab.entries.forEach { tab ->
+                            NavigationBarItem(
+                                selected = selectedTab == tab,
+                                onClick = { navController.navigateToApp(tab) },
+                                icon = { NavigationSymbol(tab.symbol, tab.label) },
+                                label = { Text(tab.label) },
+                            )
+                        }
                     }
+                }) { padding ->
+                    AppContent(
+                        Modifier
+                            .padding(padding)
+                            .consumeWindowInsets(padding),
+                        navController,
+                        appLockEnabled,
+                        onAppLockEnabledChange,
+                    )
                 }
-            }) { padding ->
-                AppContent(
-                    Modifier
-                        .padding(padding)
-                        .consumeWindowInsets(padding),
-                    navController,
-                    appLockEnabled,
-                    onAppLockEnabledChange,
-                )
             }
         }
     }

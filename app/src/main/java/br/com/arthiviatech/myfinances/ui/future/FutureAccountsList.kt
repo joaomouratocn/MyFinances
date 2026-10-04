@@ -1,6 +1,7 @@
 package br.com.arthiviatech.myfinances.ui.future
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -25,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import br.com.arthiviatech.myfinances.ui.tour.tourTarget
 import br.com.arthiviatech.myfinances.ui.theme.MyFinancesTheme
 
 @Composable
@@ -41,7 +43,9 @@ internal fun FutureAccountsList(
                 }
             }
         }
-        item { SectionTitle("Aguardando valor") }
+        item {
+            Box(Modifier.tourTarget("future_accounts")) { SectionTitle("Aguardando valor") }
+        }
         if (pending.isEmpty()) item { EmptyFutureCard("Nenhuma conta aguardando atualização") }
         items(pending, key = { "pending-${it.id}" }) { AccountCard(it, onEnterValue, onAccountClick) }
         if (paused.isNotEmpty()) {

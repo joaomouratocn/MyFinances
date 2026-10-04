@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.arthiviatech.myfinances.ui.theme.MyFinancesTheme
+import br.com.arthiviatech.myfinances.ui.tour.tourTarget
 
 @Composable
 internal fun MoreManagementSection(
@@ -33,7 +34,10 @@ internal fun MoreManagementSection(
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         MoreSectionTitle("CADASTROS")
-        MoreManagementItem("Receitas", "Fixas e eventuais", Icons.Rounded.Payments, onRevenues)
+        MoreManagementItem(
+            "Receitas", "Fixas e eventuais", Icons.Rounded.Payments, onRevenues,
+            modifier = Modifier.tourTarget("more_management"),
+        )
         MoreManagementItem("Cartões", "Cartões usados nas despesas", Icons.Rounded.CreditCard, onCards)
         MoreManagementItem("Faturas", "Gastos mensais por cartão", Icons.AutoMirrored.Rounded.ReceiptLong, onInvoices)
         MoreManagementItem("Categorias", "Organização dos lançamentos", Icons.Rounded.Category, onCategories)
@@ -41,8 +45,14 @@ internal fun MoreManagementSection(
 }
 
 @Composable
-private fun MoreManagementItem(title: String, subtitle: String, icon: ImageVector, onClick: () -> Unit) {
-    Card(onClick = onClick, modifier = Modifier.fillMaxWidth()) {
+private fun MoreManagementItem(
+    title: String,
+    subtitle: String,
+    icon: ImageVector,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(onClick = onClick, modifier = modifier.fillMaxWidth()) {
         Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
             Column(modifier = Modifier.weight(1f).padding(horizontal = 16.dp)) {
